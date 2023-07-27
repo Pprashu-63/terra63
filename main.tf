@@ -20,8 +20,10 @@ resource "aws_instance" "example456" {
   ami           = "ami-0f9ce67dcf718d332"  
   instance_type = "t3.medium"
   subnet_id     = aws_subnet.main.id
+  tags = {
+    Name = "myinstance63"
 }
-
+}
 
 resource "aws_s3_bucket" "example567" {
   bucket = "my-example-bucket62"  # Replace with your desired bucket name
