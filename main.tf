@@ -3,7 +3,7 @@ resource "aws_instance" "my_instance" {
   instance_type = "t3.medium"
   count=5 
   key_name      = "new-kp"
-  vpc_security_group_ids = ["sg-03fcc86e71629b1cb"]
+  vpc_security_group_ids = ["sg-023aab4c9cbab376a"]
   subnet_id     = "subnet-0c0ab16ad88c499ba"
   tags= {
   Name: "Terra-jen"
