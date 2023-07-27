@@ -10,8 +10,8 @@ resource "aws_instance" "my_instance" {
 }
 }
 
-resource "aws_s3_bucket" "example_bucket" {
-  bucket = "example-bucket"  # Replace with your desired bucket name
+resource "aws_s3_bucket" "example_bucket123" {
+  bucket = "example-bucket63"  
   acl    = "private"
 
   versioning {
