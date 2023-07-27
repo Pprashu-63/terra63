@@ -1,35 +1,27 @@
 pipeline {
     agent any
 
-     environment {
-        AWS_ACCESS_KEY_ID     = credentials('access-key')
-        AWS_SECRET_ACCESS_KEY = credentials('security-key')
-    }
-
     stages {
-        stage('checkout') {
+        stage('Checkout') {
             steps {
-                 script{
-                        dir("terraform")
-                        {
-                            git "https://github.com/Pprashu-63/terra63.git"
-                        }
-                    }
-                }
+                git credentialsId: 'c95a441d-fa04-46ae-81f7-5e34a6a45950', url: 'https://github.com/Pprashu-63/terra63.git'
             }
-
-        stage('Plan') {
+        }
+        stage('Terraform init') {
             steps {
-                sh 'pwd;cd terraform/ ; terraform init'
-                sh "pwd;cd terraform/ ; terraform plan -out tfplan"
-                sh 'pwd;cd terraform/ ; terraform show -no-color tfplan > tfplan.txt'
+                sh 'terraform init'
+            }
+        }
+        stage('Terraform plan'){
+            steps{
+                sh 'terraform plan'
+            }
+        }
+        stage('Terraform apply') {
+            steps {
+                sh 'terraform apply --auto-approve'
             }
         }
         
     }
-
-  }
-
-
-    
-
+}
