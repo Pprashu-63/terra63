@@ -8,3 +8,4 @@ resource "aws_instance" "my_instance" {
   Name: "Terra63s"
 }
 }
+
